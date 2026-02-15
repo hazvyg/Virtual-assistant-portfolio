@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarah Martinez - Virtual Assistant Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2C5F7C;
+            --secondary: #E89B4C;
+            --accent: #D6705B;
+            --dark: #1A1A2E;
+            --light: #F8F9FA;
+            --cream: #FFF8F0;
+            --gradient-1: linear-gradient(135deg, #2C5F7C 0%, #4A8FB0 100%);
+            --gradient-2: linear-gradient(135deg, #E89B4C 0%, #F4B77D 100%);
+            --shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--dark);
+            background: var(--cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(232, 155, 76, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(214, 112, 91, 0.2) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -30px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .hero .tagline {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 0.9rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-2);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 1.5rem auto 0;
+        }
+
+        /* About Section */
+        .about-section {
+            background: white;
+            padding: 5rem 2rem;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+            color: #444;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: var(--gradient-1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Services Grid */
+        .services-section {
+            background: var(--light);
+            padding: 5rem 2rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Work Samples */
+        .samples-section {
+            background: white;
+            padding: 5rem 2rem;
+        }
+
+        .sample-card {
+            background: var(--cream);
+            border-radius: 25px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .sample-card:hover {
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+        }
+
+        .sample-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .sample-number {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .sample-header h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .sample-tag {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .sample-content {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .sample-text h4 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .sample-text p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .sample-text ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .sample-text ul li {
+            padding-left: 2rem;
+            position: relative;
+            margin-bottom: 0.8rem;
+            color: #555;
+        }
+
+        .sample-text ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Visual Sample Mockup */
+        .visual-sample {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-top: 2rem;
+        }
+
+        .email-mockup {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .email-header {
+            background: #f5f5f5;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .email-subject {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .email-meta {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .email-body {
+            padding: 2rem 1.5rem;
+            background: white;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .email-body p {
+            margin-bottom: 1rem;
+        }
+
+        .email-signature {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e0e0e0;
+            color: #666;
+        }
+
+        /* Social Media Post Mockup */
+        .social-mockup {
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .social-header {
+            padding: 1rem 1.5rem;
+            background: white;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .social-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .social-info h4 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .social-info p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .social-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .social-content {
+            padding: 1.5rem;
+            background: white;
+        }
+
+        .social-actions {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1rem 1.5rem;
+            background: white;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .social-action {
+            color: #666;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Dashboard Mockup */
+        .dashboard-mockup {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .metric-box {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .metric-box:hover {
+            border-color: var(--secondary);
+            transform: scale(1.05);
+        }
+
+        .metric-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Results Section */
+        .results-box {
+            background: linear-gradient(135deg, rgba(232, 155, 76, 0.1), rgba(214, 112, 91, 0.1));
+            border-left: 4px solid var(--secondary);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .results-box h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            background: var(--gradient-1);
+            padding: 5rem 2rem;
+            color: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .quote-icon {
+            font-size: 3rem;
+            color: var(--secondary);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .author-info h4 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .author-info p {
+            margin: 0;
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background: white;
+            padding: 5rem 2rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .skill-category h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.6rem 0;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .skill-list li::before {
+            content: '●';
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--dark);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-2);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(232, 155, 76, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--dark);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            margin: 0;
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .sample-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Print Styles */
+        @media print {
+            .scroll-indicator,
+            .cta-section,
+            footer {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Sarah Martinez</h1>
+            <div class="subtitle">Virtual Assistant</div>
+            <div class="tagline">
+                Transforming business operations through exceptional administrative support, 
+                strategic organization, and client-focused service excellence
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">📧 sarah.martinez@email.com</div>
+                <div class="contact-item">📱 (555) 123-4567</div>
+                <div class="contact-item">💼 linkedin.com/in/sarahmartinez</div>
+                <div class="contact-item">🌍 Remote (EST)</div>
+            </div>
+        </div>
+        <div class="scroll-indicator">↓ Scroll to explore</div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <p>Dedicated professional with proven expertise in streamlining operations and delivering exceptional results</p>
+            </div>
+            <div class="about-content">
+                <p>
+                    I am a dedicated Virtual Assistant with over 1 year of specialized experience in the tourism 
+                    industry, managing comprehensive operations for Chikopopo Tour Company. My expertise spans 
+                    administrative support, customer service excellence, booking management, and digital marketing.
+                </p>
+                <p>
+                    I excel at streamlining operations, implementing efficient systems, and delivering exceptional 
+                    client experiences. My approach combines strong organizational skills with proactive communication 
+                    and innovative problem-solving abilities.
+                </p>
+            </div>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">40%</div>
+                    <div class="stat-label">Reduced Scheduling Conflicts</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">35%</div>
+                    <div class="stat-label">Increased Online Bookings</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4.7/5</div>
+                    <div class="stat-label">Customer Satisfaction Rating</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Customer Inquiries Per Week</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Core Services</h2>
+                <p>Comprehensive virtual assistant solutions tailored to your business needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📋</div>
+                    <h3>Administrative Support</h3>
+                    <p>Complete office management, document preparation, data entry, and organizational systems that keep your business running smoothly.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📅</div>
+                    <h3>Calendar Management</h3>
+                    <p>Expert scheduling coordination, appointment management, and time optimization to maximize your productivity.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💬</div>
+                    <h3>Customer Service</h3>
+                    <p>Professional client communications, inquiry management, and relationship building that enhances customer satisfaction.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📧</div>
+                    <h3>Email Management</h3>
+                    <p>Efficient inbox organization, correspondence handling, and communication workflow optimization.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Lead Generation</h3>
+                    <p>Strategic prospect research, outreach campaigns, and CRM management to grow your customer base.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Social Media</h3>
+                    <p>Content creation, platform management, and engagement strategies that amplify your online presence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Samples Section -->
+    <section class="samples-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Work Samples & Achievements</h2>
+                <p>Real results from real projects demonstrating measurable impact</p>
+            </div>
+
+            <!-- Sample 1: Operations Management -->
+            <div class="sample-card">
+                <div class="sample-header">
+                    <div class="sample-number">01</div>
+                    <h3>Operations Management System</h3>
+                </div>
+                <span class="sample-tag">Chikopopo Tour Company</span>
+                <div class="sample-content">
+                    <div class="sample-text">
+                        <h4>Challenge</h4>
+                        <p>Company experienced frequent scheduling conflicts and inefficient booking processes resulting in customer dissatisfaction and lost revenue.</p>
+                        
+                        <h4>Solution</h4>
+                        <p>Implemented a comprehensive booking management system integrating calendar management, automated email confirmations, and real-time availability tracking.</p>
+                        
+                        <div class="results-box">
+                            <h4>Results Achieved</h4>
+                            <ul>
+                                <li>Reduced scheduling conflicts by 40%</li>
+                                <li>Improved operational efficiency allowing 25% more bookings per week</li>
+                                <li>Increased customer satisfaction from 3.8 to 4.7 out of 5</li>
+                                <li>Streamlined communication between staff and customers</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sample 2: Customer Service -->
+            <div class="sample-card">
+                <div class="sample-header">
+                    <div class="sample-number">02</div>
+                    <h3>Customer Service Excellence</h3>
+                </div>
+                <span class="sample-tag">Email & Communication Management</span>
+                <div class="sample-content">
+                    <div class="sample-text">
+                        <h4>Scope</h4>
+                        <p>Managed all customer communications across multiple channels including email, phone, social media, and live chat for an adventure tourism company.</p>
+                        
+                        <h4>Key Responsibilities</h4>
+                        <ul>
+                            <li>Responded to 150+ customer inquiries per week</li>
+                            <li>Maintained average response time under 2 hours</li>
+                            <li>Handled bookings, modifications, and cancellations</li>
+                            <li>Resolved complaints with 95% satisfaction rate</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="visual-sample">
+                        <h4 style="margin-bottom: 1.5rem; color: var(--primary);">Sample Email Response</h4>
+                        <div class="email-mockup">
+                            <div class="email-header">
+                                <div class="email-subject">Your Chikopopo Tour Booking Confirmation - #CT2024-1567</div>
+                                <div class="email-meta">From: Sarah Martinez | To: client@email.com</div>
+                            </div>
+                            <div class="email-body">
+                                <p>Dear Mr. Johnson,</p>
+                                <p>Thank you for choosing Chikopopo Tours! I'm delighted to confirm your adventure tour booking for Saturday, March 15th, 2024 at 10:00 AM.</p>
+                                <p><strong>Booking Details:</strong></p>
+                                <p style="padding-left: 1rem;">
+                                    • Date: Saturday, March 15th, 2024<br>
+                                    • Time: 10:00 AM (Please arrive 15 minutes early)<br>
+                                    • Duration: 2 hours<br>
+                                    • Number of Guests: 2 adults<br>
+                                    • Total Cost: $450.00 (Paid via credit card)
+                                </p>
+                                <p><strong>What to bring:</strong> Camera, comfortable clothing, closed-toe shoes, and sunglasses. We provide all safety equipment.</p>
+                                <p>If you have any questions or need to make changes, please don't hesitate to contact me directly at (555) 123-4567 or reply to this email.</p>
+                                <p>We look forward to providing you with an unforgettable experience!</p>
+                                <div class="email-signature">
+                                    Best regards,<br>
+                                    <strong>Sarah Martinez</strong><br>
+                                    Virtual Assistant<br>
+                                    Chikopopo Tour Company
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sample 3: Lead Generation -->
+            <div class="sample-card">
+                <div class="sample-header">
+                    <div class="sample-number">03</div>
+                    <h3>Lead Generation Campaign</h3>
+                </div>
+                <span class="sample-tag">Business Development</span>
+                <div class="sample-content">
+                    <div class="sample-text">
+                        <h4>Objective</h4>
+                        <p>Identify and reach out to potential corporate clients for group tour packages and team-building experiences.</p>
+                        
+                        <h4>Strategy</h4>
+                        <ul>
+                            <li>Researched 200+ local businesses and event planners</li>
+                            <li>Created qualified prospect database with contact information</li>
+                            <li>Developed personalized email outreach campaigns</li>
+                            <li>Conducted follow-up calls and scheduled sales meetings</li>
+                            <li>Maintained CRM with detailed notes and schedules</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="visual-sample">
+                        <h4 style="margin-bottom: 1.5rem; color: var(--primary);">Sample Outreach Email</h4>
+                        <div class="email-mockup">
+                            <div class="email-header">
+                                <div class="email-subject">Unique Team Building Experience for Summit Events</div>
+                                <div class="email-meta">From: Sarah Martinez | To: prospects@summitevents.com</div>
+                            </div>
+                            <div class="email-body">
+                                <p>Dear Ms. Rodriguez,</p>
+                                <p>I noticed Summit Events specializes in creating memorable corporate experiences. I'm reaching out to introduce Chikopopo Tours – we provide unique adventure experiences perfect for team building and corporate events.</p>
+                                <p><strong>What sets us apart:</strong></p>
+                                <p style="padding-left: 1rem;">
+                                    • Customizable group packages for 10-50 people<br>
+                                    • Professional photography included<br>
+                                    • Flexible scheduling for corporate needs<br>
+                                    • 15% discount for corporate bookings
+                                </p>
+                                <p>Would you be interested in a brief 15-minute call next week to discuss how we can support your upcoming corporate events?</p>
+                                <div class="email-signature">
+                                    Best regards,<br>
+                                    <strong>Sarah Martinez</strong><br>
+                                    Virtual Assistant<br>
+                                    Chikopopo Tour Company<br>
+                                    (555) 123-4567
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="results-box" style="margin-top: 2rem;">
+                            <h4>Campaign Results</h4>
+                            <ul>
+                                <li>Generated 45 qualified leads in 3 months</li>
+                                <li>Achieved 22% email open rate and 8% response rate</li>
+                                <li>Secured 12 corporate partnerships worth $35,000</li>
+                                <li>Reduced client acquisition cost by 30%</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sample 4: Social Media -->
+            <div class="sample-card">
+                <div class="sample-header">
+                    <div class="sample-number">04</div>
+                    <h3>Social Media Management</h3>
+                </div>
+                <span class="sample-tag">Digital Marketing</span>
+                <div class="sample-content">
+                    <div class="sample-text">
+                        <h4>Platforms Managed</h4>
+                        <p>Facebook, Instagram, Twitter, LinkedIn</p>
+                        
+                        <h4>Responsibilities</h4>
+                        <ul>
+                            <li>Created and scheduled 20+ posts per week</li>
+                            <li>Designed graphics using Canva and Photoshop</li>
+                            <li>Responded to comments within 1 hour</li>
+                            <li>Monitored analytics and adjusted strategy</li>
+                            <li>Ran targeted ad campaigns for tourists</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="visual-sample">
+                        <h4 style="margin-bottom: 1.5rem; color: var(--primary); text-align: center;">Sample Instagram Post</h4>
+                        <div class="social-mockup">
+                            <div class="social-header">
+                                <div class="social-avatar">CT</div>
+                                <div class="social-info">
+                                    <h4>Chikopopo Tours</h4>
+                                    <p>Adventure Tourism Company</p>
+                                </div>
+                            </div>
+                            <div class="social-image">
+                                📸 Beautiful Aerial Landscape<br>Happy Customers Enjoying Adventure
+                            </div>
+                            <div class="social-content">
+                                <p style="margin-bottom: 1rem;"><strong>✨ ADVENTURE OF A LIFETIME ✨</strong></p>
+                                <p style="margin-bottom: 1rem;">Thank you to the Johnson family for choosing Chikopopo Tours! 🎉 They celebrated their 25th wedding anniversary with us and created memories that will last forever.</p>
+                                <p style="margin-bottom: 1rem; font-style: italic;">"The views were absolutely breathtaking, and Sarah made the entire booking process so easy!" - Michael J.</p>
+                                <p style="margin-bottom: 0.5rem;">📅 Book your adventure today! Link in bio or call (555) 123-4567</p>
+                                <p style="color: #2C5F7C; font-size: 0.9rem;">#ChikopopoTours #AdventureTravel #TravelGoals #CustomerLove #AnniversaryCelebration</p>
+                            </div>
+                            <div class="social-actions">
+                                <div class="social-action">❤️ 347 likes</div>
+                                <div class="social-action">💬 23 comments</div>
+                                <div class="social-action">📤 12 shares</div>
+                            </div>
+                        </div>
+                        
+                        <div class="results-box" style="margin-top: 2rem;">
+                            <h4>Social Media Results</h4>
+                            <ul>
+                                <li>Grew Instagram from 800 to 3,500 followers in 6 months</li>
+                                <li>Increased Facebook engagement by 125%</li>
+                                <li>Generated 35% of new bookings through social channels</li>
+                                <li>Average engagement rate: 6.2% (industry average: 3.5%)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sample 5: Data Management -->
+            <div class="sample-card">
+                <div class="sample-header">
+                    <div class="sample-number">05</div>
+                    <h3>Database Management & Reporting</h3>
+                </div>
+                <span class="sample-tag">Analytics & Organization</span>
+                <div class="sample-content">
+                    <div class="sample-text">
+                        <h4>Project Overview</h4>
+                        <p>Created comprehensive customer database and monthly reporting system for management decision-making.</p>
+                        
+                        <h4>Tasks Completed</h4>
+                        <ul>
+                            <li>Migrated customer data from multiple spreadsheets</li>
+                            <li>Organized 1,200+ customer records with booking history</li>
+                            <li>Created automated monthly reports</li>
+                            <li>Developed customer segmentation for marketing</li>
+                            <li>Maintained 99.8% data accuracy rate</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="visual-sample">
+                        <h4 style="margin-bottom: 1.5rem; color: var(--primary);">Sample Monthly Report - March 2024</h4>
+                        <div class="dashboard-mockup">
+                            <div class="dashboard-grid">
+                                <div class="metric-box">
+                                    <div class="metric-value">156</div>
+                                    <div class="metric-label">Total Bookings</div>
+                                </div>
+                                <div class="metric-box">
+                                    <div class="metric-value">98</div>
+                                    <div class="metric-label">New Customers (63%)</div>
+                                </div>
+                                <div class="metric-box">
+                                    <div class="metric-value">58</div>
+                                    <div class="metric-label">Repeat Customers (37%)</div>
+                                </div>
+                                <div class="metric-box">
+                                    <div class="metric-value">$42.7K</div>
+                                    <div class="metric-label">Revenue</div>
+                                </div>
+                                <div class="metric-box">
+                                    <div class="metric-value">4.7</div>
+                                    <div class="metric-label">Customer Satisfaction</div>
+                                </div>
+                                <div class="metric-box">
+                                    <div class="metric-value">1.8h</div>
+                                    <div class="metric-label">Avg Response Time</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="results-box" style="margin-top: 2rem;">
+                            <h4>Impact</h4>
+                            <p>Provided management with actionable insights that informed marketing strategy and resulted in 28% increase in year-over-year bookings.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sample 6: Calendar Management -->
+            <div class="sample-card">
+                <div class="sample-header">
+                    <div class="sample-number">06</div>
+                    <h3>Calendar & Schedule Coordination</h3>
+                </div>
+                <span class="sample-tag">Time Management</span>
+                <div class="sample-content">
+                    <div class="sample-text">
+                        <h4>Scope</h4>
+                        <p>Managed complex scheduling for multiple tour guides, customer bookings, and equipment maintenance.</p>
+                        
+                        <h4>Daily Responsibilities</h4>
+                        <ul>
+                            <li>Coordinated 8-12 tour bookings per day</li>
+                            <li>Managed staff schedules for optimal coverage</li>
+                            <li>Scheduled equipment maintenance to minimize disruption</li>
+                            <li>Handled last-minute changes and rescheduling</li>
+                            <li>Sent automated reminders 48 and 24 hours before tours</li>
+                            <li>Coordinated weather-related cancellations</li>
+                        </ul>
+                        
+                        <h4>Tools Used</h4>
+                        <ul>
+                            <li>Google Calendar for main scheduling</li>
+                            <li>Calendly for customer self-booking</li>
+                            <li>Custom booking system integrated with website</li>
+                        </ul>
+                        
+                        <div class="results-box">
+                            <h4>Results Achieved</h4>
+                            <ul>
+                                <li>Reduced scheduling conflicts from 25% to 3%</li>
+                                <li>Improved staff utilization rate to 92%</li>
+                                <li>Decreased no-show rate from 12% to 4%</li>
+                                <li>Maintained 99.5% on-time departure rate</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Technical Proficiency</h2>
+                <p>Comprehensive skill set across essential business tools and platforms</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Office Software</h3>
+                    <ul class="skill-list">
+                        <li>Microsoft Office Suite (Advanced)</li>
+                        <li>Google Workspace (Expert)</li>
+                        <li>LibreOffice</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Project Management</h3>
+                    <ul class="skill-list">
+                        <li>Trello</li>
+                        <li>Asana</li>
+                        <li>Monday.com</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Communication</h3>
+                    <ul class="skill-list">
+                        <li>Zoom</li>
+                        <li>Microsoft Teams</li>
+                        <li>Slack</li>
+                        <li>Skype</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Design Tools</h3>
+                    <ul class="skill-list">
+                        <li>Canva</li>
+                        <li>Adobe Photoshop (Basic)</li>
+                        <li>Social Media Graphics</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>CRM & Sales</h3>
+                    <ul class="skill-list">
+                        <li>HubSpot</li>
+                        <li>Salesforce (Basic)</li>
+                        <li>Lead Management</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Scheduling</h3>
+                    <ul class="skill-list">
+                        <li>Calendly</li>
+                        <li>Acuity Scheduling</li>
+                        <li>Google Calendar</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Accounting</h3>
+                    <ul class="skill-list">
+                        <li>QuickBooks</li>
+                        <li>FreshBooks</li>
+                        <li>Invoice Management</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Social Media</h3>
+                    <ul class="skill-list">
+                        <li>Facebook Business Suite</li>
+                        <li>Buffer</li>
+                        <li>Hootsuite</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 style="color: white;">Client Testimonials</h2>
+                <p style="color: rgba(255,255,255,0.9);">What clients say about working with me</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <div class="testimonial-text">
+                        Sarah has been an absolute game-changer for our business. Her organizational skills and 
+                        attention to detail transformed our chaotic booking system into a streamlined operation. 
+                        She's proactive, professional, and always goes above and beyond.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">DC</div>
+                        <div class="author-info">
+                            <h4>David Chen</h4>
+                            <p>Owner, Chikopopo Tour Company</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <div class="testimonial-text">
+                        Working with Sarah was a pleasure from start to finish. She handled all our customer 
+                        communications with such professionalism and warmth. Our customers frequently mentioned 
+                        how helpful and responsive she was.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MR</div>
+                        <div class="author-info">
+                            <h4>Maria Rodriguez</h4>
+                            <p>Operations Manager</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <div class="testimonial-text">
+                        Sarah's lead generation work brought in several high-value corporate clients that 
+                        significantly boosted our revenue. Her professional approach and persistence in 
+                        following up with prospects was impressive.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JT</div>
+                        <div class="author-info">
+                            <h4>James Thompson</h4>
+                            <p>Sales Director</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Let's Work Together</h2>
+            <p>
+                I'm passionate about helping businesses streamline their operations and deliver exceptional 
+                customer experiences. Whether you need support with administrative tasks, customer service, 
+                lead generation, or digital marketing, I bring dedication, professionalism, and a proven 
+                track record of results.
+            </p>
+            <p>
+                Available for both ongoing retainer relationships and project-based work. My flexible schedule 
+                allows me to adapt to your business needs, including evenings and weekends when required.
+            </p>
+            <div class="cta-buttons">
+                <a href="mailto:sarah.martinez@email.com" class="btn btn-primary">Send Email</a>
+                <a href="tel:5551234567" class="btn btn-secondary">Call Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Sarah Martinez - Virtual Assistant Portfolio. All rights reserved.</p>
+    </footer>
+</body>
+</html>
